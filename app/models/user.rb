@@ -10,6 +10,11 @@ class User < ActiveRecord::Base
   :foreign_key => :moderator_id,
   :primary_key => :id
 
+  has_many :links,
+  :class_name => "Link",
+  :foreign_key => :user_id,
+  :primary_key => :id
+
   include BCrypt
 
   def password=(password)

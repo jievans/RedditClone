@@ -9,4 +9,10 @@ class Link < ActiveRecord::Base
   has_many :subs,
   :through => :link_subs,
   :source => :sub
+
+  belongs_to :user,
+  :class_name => "User",
+  :foreign_key => :user_id,
+  :primary_key => :id
+
 end

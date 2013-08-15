@@ -18,7 +18,11 @@ class SubsController < ApplicationController
         end
 
         @sub.save!
-        @links.each { |link| link.sub_ids = [@sub.id]; link.save! }
+        @links.each do |link|
+          link.sub_ids = [@sub.id]
+          link.user_id = current_user.id
+          link.save!
+        end
 
         redirect_to sub_url(@sub)
       end
