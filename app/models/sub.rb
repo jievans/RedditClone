@@ -1,5 +1,5 @@
 class Sub < ActiveRecord::Base
-  attr_accessible :moderator_id, :name
+  attr_accessible :name
 
   belongs_to :moderator,
   :class_name => "User",

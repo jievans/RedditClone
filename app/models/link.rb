@@ -1,5 +1,5 @@
 class Link < ActiveRecord::Base
-  attr_accessible :description, :title, :url
+  attr_accessible :description, :title, :url, :sub_ids
 
   has_many :link_subs,
   :class_name => "LinkSub",

@@ -9,11 +9,18 @@
   <input type="text" name="sub[name]" id="sub_name"
   value="<%= @sub.name %>"> <br />
 
-  <% @sub.links do |link| %>
+  <h2>Edit Links</h2>
 
-  <%= link_to "Edit #{link.title}", edit_link_url(link) %>
+  <div>
 
-  <% end %>
+    <% @sub.links.each do |link| %>
 
-  <input type="submit" value="Edit my sub!">
+    <%= link_to "Edit #{link.title}", edit_link_url(link) %><br />
+
+    <% end %>
+
+    <input type="submit" value="Edit my sub!">
+  </div>
+
+
 </form>

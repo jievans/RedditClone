@@ -1,0 +1,7 @@
+<%= @link.title %><br />
+<%= @link.url %><br />
+<%= @link.description %><br />
+
+<% @link.subs.each do |sub| %>
+  <%= link_to sub.name, sub_url(sub) %>
+<% end %>

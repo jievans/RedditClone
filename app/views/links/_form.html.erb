@@ -1,0 +1,36 @@
+
+<% action_url = action == :edit ? link_url(link) : links_url %>
+
+<form action="<%= action_url %>" method="post">
+  <input type="hidden" name="authenticity_token"
+  value="<%= form_authenticity_token %>">
+
+  <% if action == :edit %>
+  <input type="hidden" name="_method" value="put">
+  <% end %>
+
+  <label for="link_title">Title</label>
+  <input type="text" name="link[title]" id="link_title"
+  value="<%= link.title %>"><br />
+
+  <label for="link_url">URL</label>
+  <input type="text" name="link[url]" id="link_url"
+  value="<%= link.url %>"><br />
+
+  <label for="link_description">Description</label><br />
+  <textarea name="link[description]"
+  id="link_description"><%= link.description %></textarea>
+
+  <h2>Choose subs for link: </h2>
+  <div>
+  <% Sub.all.each do |sub| %>
+  <% id_att = "sub_ids_#{sub.id}" %>
+  <input type="checkbox" name="link[sub_ids][]" value="<%= sub.id %>"
+  id="<%= id_att %>"
+  <%= "checked" if link.sub_ids.include?(sub.id)  %>>
+  <label for="<%= id_att %>"><%= sub.name %></label><br />
+  <% end %>
+  </div>
+
+  <input type="submit" value="Complete link!">
+</form>
