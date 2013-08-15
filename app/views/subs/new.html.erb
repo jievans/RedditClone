@@ -1,0 +1,28 @@
+<h1>SUB creation</h1>
+
+<form action="<%= subs_url %>" method="post">
+  <input type="hidden" name="authenticity_token"
+  value="<%= form_authenticity_token %>">
+
+  <label for="sub_name">Name</label>
+  <input type="text" name="sub[name]" id="sub_name"><br />
+
+  <% 5.times do |link_num| %>
+  <% name = "links[#{link_num}]"%>
+  <% id = "links_#{link_num}" %>
+  <div class="link-form">
+    <h3><%= "Link ##{link_num}" %></h3>
+  <label for="<%= id %>_title">Title</label>
+  <input type="text" name="<%= name %>[title]" id="<%= id %>_title"><br />
+
+  <label for="<%= id %>_url">URL</label>
+  <input type="text" name="<%= name %>[url]" id="<%= id %>_url"><br />
+
+  <label for="<%= id %>_description">Description</label><br />
+  <textarea name="<%= name %>[description]"
+  id="<%= id %>_description"></textarea>
+  </div>
+  <% end %>
+
+  <input type="submit" value="Make my sub!">
+</form>

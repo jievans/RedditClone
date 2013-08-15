@@ -5,6 +5,11 @@ class User < ActiveRecord::Base
 
   before_validation :generate_token, :on => :create
 
+  has_many :subs,
+  :class_name => "Sub",
+  :foreign_key => :moderator_id,
+  :primary_key => :id
+
   include BCrypt
 
   def password=(password)
