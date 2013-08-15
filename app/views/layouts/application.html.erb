@@ -8,7 +8,26 @@
 </head>
 <body>
 
+<% unless flash[:notices].nil? %>
+  <div>
+    <% flash[:notices].each do |notice| %>
+      <%= notice %><br />
+    <%end%>
+  </div>
+<%end%>
+
 <%= yield %>
+
+<% if logged_in? %>
+<form action="<%= session_url %>" method="post">
+  <input type="hidden" name="authenticity_token"
+  value="<%= form_authenticity_token %>">
+
+  <input type="hidden" name="_method" value="delete">
+
+  <input type="submit" value="Sign Out">
+</form>
+<% end %>
 
 </body>
 </html>
