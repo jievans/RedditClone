@@ -38,8 +38,6 @@ class Link < ActiveRecord::Base
     self.comments.each do |comment|
       parents_hash[comment.parent_comment_id] ||= []
       parents_hash[comment.parent_comment_id] << comment
-      puts "PARENTS HASH IS: "
-      p parents_hash
     end
     parents_hash
   end

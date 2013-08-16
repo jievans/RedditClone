@@ -1,0 +1,6 @@
+<% @all_links.each do |link| %>
+<div>
+  Votes: <%= link.vote_sum %>
+  <%= link_to link.title, link_url(link) %>
+</div>
+<% end %>

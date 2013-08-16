@@ -6,15 +6,21 @@
   <%= link_to sub.name, sub_url(sub) %>
 <% end %>
 
-<%= button_to "Upvote", upvote_link_url(@link) %>
+<% unless current_user.upvoted?(@link) %>
+<%= button_to "Upvote", upvote_link_url(@link)%>
+<% end %>
+
+<% unless current_user.downvoted?(@link) %>
 <%= button_to "Downvote", downvote_link_url(@link) %>
+<% end %>
+
 
 <h2>You ready for these comments....?</h2>
 
+<% unless @link.comments_by_parent[nil].nil? %>
 <% @link.comments_by_parent[nil].each do |comment| %>
 <%= render :partial => "comment_form", :locals => {:comment => comment,
   :comments_by_parent => @link.comments_by_parent } %>
 <% end %>
-
-
+<% end %>
 

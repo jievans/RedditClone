@@ -43,6 +43,22 @@ class SubsController < ApplicationController
 
   def show
     @sub = Sub.find_by_id(params[:id])
+    @links = Link.find_by_sql([<<-SQL, params[:id]])
+    SELECT links.*, SUM(CASE WHEN user_votes.choice = 'up'
+        THEN 1
+        WHEN user_votes.choice = 'down'
+        THEN -1
+        ELSE 0
+      END) vote_sum
+        FROM links
+         LEFT JOIN user_votes
+         ON user_votes.link_id = links.id
+         JOIN link_subs
+         ON link_subs.link_id = links.id
+     WHERE (link_subs.sub_id = ?)
+     GROUP BY (links.id)
+   ORDER BY (vote_sum) DESC;
+    SQL
     render :show
   end
 
