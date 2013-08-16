@@ -20,6 +20,19 @@ class Link < ActiveRecord::Base
   :foreign_key => :link_id,
   :primary_key => :id
 
+  has_many :votes,
+  :class_name => "UserVote",
+  :foreign_key => :link_id,
+  :primary_key => :id
+
+  def num_upvotes
+    self.votes.where(:choice => "up").count
+  end
+
+  def num_downvotes
+    self.votes.where(:choice => "down").count
+  end
+
   def comments_by_parent
     parents_hash = {}
     self.comments.each do |comment|

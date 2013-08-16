@@ -15,6 +15,25 @@ class User < ActiveRecord::Base
   :foreign_key => :user_id,
   :primary_key => :id
 
+  has_many :votes,
+  :class_name => "UserVote",
+  :foreign_key => :user_id,
+  :primary_key => :id
+
+  def upvoted?(link)
+    self.votes
+        .where(:link_id => link.id, :choice => "up")
+        .pluck(:link_id)
+        .include?(link.id)
+  end
+
+  def downvoted?(link)
+    self.votes
+        .where(:link_id => link.id, :choice => "down")
+        .pluck(:link_id)
+        .include?(link.id)
+  end
+
   include BCrypt
 
   def password=(password)
