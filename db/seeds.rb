@@ -7,3 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create!(:name => "james", :password => "james")
+# Link.create!()

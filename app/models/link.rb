@@ -15,4 +15,20 @@ class Link < ActiveRecord::Base
   :foreign_key => :user_id,
   :primary_key => :id
 
+  has_many :comments,
+  :class_name => "Comment",
+  :foreign_key => :link_id,
+  :primary_key => :id
+
+  def comments_by_parent
+    parents_hash = {}
+    self.comments.each do |comment|
+      parents_hash[comment.parent_comment_id] ||= []
+      parents_hash[comment.parent_comment_id] << comment
+      puts "PARENTS HASH IS: "
+      p parents_hash
+    end
+    parents_hash
+  end
+
 end

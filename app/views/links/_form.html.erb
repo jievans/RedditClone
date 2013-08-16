@@ -32,5 +32,11 @@
   <% end %>
   </div>
 
+  <% if action == :new %>
+  <label for id="comment_body">Care to Comment?</label>
+  <textarea name="comment[body]" id="comment_body"
+  value="<%= link.url %>"></textarea>
+  <% end %>
+
   <input type="submit" value="Complete link!">
 </form>

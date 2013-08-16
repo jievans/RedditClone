@@ -9,6 +9,11 @@ class LinksController < ApplicationController
 
   def create
     link = current_user.links.create!(params[:link])
+    if params[:comment]
+      comment = Comment.new(params[:comment])
+      comment.link_id = link.id
+      comment.save!
+    end
     redirect_to link_url(link)
   end
 

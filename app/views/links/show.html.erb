@@ -5,3 +5,13 @@
 <% @link.subs.each do |sub| %>
   <%= link_to sub.name, sub_url(sub) %>
 <% end %>
+
+<h2>You ready for these comments....?</h2>
+
+<% @link.comments_by_parent[nil].each do |comment| %>
+<%= render :partial => "comment_form", :locals => {:comment => comment,
+  :comments_by_parent => @link.comments_by_parent } %>
+<% end %>
+
+
+

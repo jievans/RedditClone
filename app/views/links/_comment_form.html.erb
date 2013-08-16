@@ -1,0 +1,12 @@
+
+<ul>
+  <li><%= comment.body %></li>
+  <% unless comments_by_parent[comment.id].nil? %>
+  <% comments_by_parent[comment.id].each do |subcomment| %>
+    <ul>
+    <%= render :partial => "comment_form", :locals => {:comment => subcomment,
+    :comments_by_parent => comments_by_parent} %>
+    </ul>
+  <% end %>
+  <% end %>
+</ul>
