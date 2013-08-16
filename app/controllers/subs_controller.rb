@@ -2,6 +2,10 @@ class SubsController < ApplicationController
 
   before_filter :authorized?, :only => [:edit, :update]
 
+  def index
+    @all_subs = Sub.all
+  end
+
   def new
     render :new
   end

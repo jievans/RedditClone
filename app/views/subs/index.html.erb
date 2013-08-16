@@ -1,0 +1,10 @@
+<h1></h1>
+<div id="subs-index">
+  <h1>Getchoo Sum Subs</h1>
+<% @all_subs.each do |sub| %>
+<div class="ind-sub">
+  <%= link_to sub.name, sub_url(sub) %>
+</div>
+<% end %>
+
+</div>
