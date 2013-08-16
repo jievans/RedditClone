@@ -32,6 +32,24 @@ class LinksController < ApplicationController
     @link = Link.find_by_id(params[:id])
   end
 
+  def downvote
+    vote = UserVote.new(:link_id => params[:id])
+    vote.user_id = current_user.id
+    vote.choice = "down"
+    vote.save!
+
+    redirect_to link_url(params[:id])
+  end
+
+  def upvote
+    vote = UserVote.new(:link_id => params[:id])
+    vote.user_id = current_user.id
+    vote.choice = "up"
+    vote.save!
+
+    redirect_to link_url(params[:id])
+  end
+
   private
 
   def authorized?
