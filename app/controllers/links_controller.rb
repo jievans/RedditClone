@@ -54,7 +54,8 @@ class LinksController < ApplicationController
     vote.choice = "down"
     vote.save!
 
-    redirect_to link_url(params[:id])
+    #redirect_to link_url(params[:id])
+    redirect_to :back
   end
 
   def upvote
@@ -63,7 +64,7 @@ class LinksController < ApplicationController
     vote.choice = "up"
     vote.save!
 
-    redirect_to link_url(params[:id])
+    redirect_to :back
   end
 
   private

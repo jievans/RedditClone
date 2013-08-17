@@ -2,35 +2,107 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$turqoise: #00ffff;
+
 .link-form{
-
   margin: 25px 0px;
-
   h3 {
-
     margin: 0px;
   }
-
 }
 
 #subs-index {
-
   h1{
     font-style: italic;
     font-size: 250%;
   }
-
   width: 500px;
   margin: auto;
   text-align: center;
-
-
 }
 
 .ind-sub{
-
   margin: 10px 0px;
+}
 
+#sub-show{
+  width: 500px;
+  margin: auto;
+
+
+  .header {
+    text-align: center;
+    font-style: italic;
+    font-size: 150%;
+  }
+
+  .unit{
+    margin: 10px 0px;
+    // remember, line-height will not be affected by changing height of
+    //  inline-block elements
+    padding: none;
+
+    .link-title{
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .vote-sum{
+      font-size: 200%;
+      width: 50px;
+      //height: 60px;
+      text-align: center;
+      display: inline-block;
+      vertical-align: middle;
+      background: pink;
+      line-height: 30px;
+
+      .bullet{
+        font-size: 70%;
+        display: inline-block;
+        width: 30px;
+        padding: 8px;
+        background: none;
+        border-width: 0;
+        margin: 0;
+        &:hover{
+          background: white;
+        }
+
+        &:active{
+          background: $turqoise;
+        }
+//        height: 5px;
+      }
+
+      .buffer{
+        display: inline-block;
+      }
+
+
+      // could we have just left the boxes as non-fixes width and then set top
+      // and bottom margins on interior element?
+
+     // &:before{
+//        content: '';
+//        // width: 10px;
+//        background: green;
+//        height: 100%;
+//        display: inline-block;
+//        vertical-align: middle;
+//        // ### I know this line is necessary, but why?!! ####
+//        margin-right: -0.25em;
+//      }
+//
+//      .sum-number{
+//        vertical-align: middle;
+//        // We have to make inline-block, because otherwise the div would clear
+//        // and wrap onto the next line.
+//        display: inline-block;
+//      }
+    }
+
+  }
 }
 
 

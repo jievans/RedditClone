@@ -1,8 +1,31 @@
-Show page for the <%= @sub.name %> sub.
 
-<% @links.each do |link| %>
-<div>
-<%= link_to link.title, link_url(link) %>
-Vote Count: <%= link.vote_sum %>
+<div id="sub-show">
+
+  <div class="header">Show page for the <%= @sub.name %> sub.</div>
+
+  <% @links.each do |link| %>
+
+  <div class="unit">
+    <div class="vote-sum">
+
+      <% unless current_user.upvoted?(link) %>
+      <%= button_to "•", upvote_link_url(link), :class => "bullet"%>
+      <% else %>
+      <div class="buffer"></div>
+      <% end %>
+
+      <div class="sum-number"><%= link.vote_sum %></div>
+
+      <% unless current_user.downvoted?(link) %>
+      <%= button_to "•", downvote_link_url(link), :class => "bullet" %>
+      <% else %>
+      <div class="buffer"></div>
+      <% end %>
+
+    </div>
+    <div class="link-title"><%= link_to link.title, link_url(link) %></div>
+  </div>
+
+  <% end %>
+
 </div>
-<% end %>
