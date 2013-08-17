@@ -3,6 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $turqoise: #00ffff;
+$mahogany: #663333;
+$true-seafoam: #C1DAD6;
+$light-dark-blue: #5A92DB;
 
 .link-form{
   margin: 25px 0px;
@@ -34,6 +37,8 @@ $turqoise: #00ffff;
     text-align: center;
     font-style: italic;
     font-size: 150%;
+    color: $light-dark-blue;
+    font-weight: bold;
   }
 
   .unit{
@@ -45,6 +50,13 @@ $turqoise: #00ffff;
     .link-title{
       display: inline-block;
       vertical-align: middle;
+      margin-left: 10px;
+
+      a{
+        font-size: 150%;
+        text-decoration: none;
+        color: #5A92DB;
+      }
     }
 
     .vote-sum{
@@ -56,6 +68,8 @@ $turqoise: #00ffff;
       vertical-align: middle;
       background: pink;
       line-height: 30px;
+      color: white;
+
 
       .bullet{
         font-size: 70%;
@@ -65,12 +79,15 @@ $turqoise: #00ffff;
         background: none;
         border-width: 0;
         margin: 0;
+        color: white;
         &:hover{
           background: white;
+          color: $light-dark-blue;
         }
 
         &:active{
           background: $turqoise;
+          color: white;
         }
 //        height: 5px;
       }

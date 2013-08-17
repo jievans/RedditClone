@@ -1,7 +1,7 @@
 
 <div id="sub-show">
 
-  <div class="header">Show page for the <%= @sub.name %> sub.</div>
+  <div class="header">the subbiest of subs: <%= @sub.name %></div>
 
   <% @links.each do |link| %>
 
@@ -23,7 +23,9 @@
       <% end %>
 
     </div>
-    <div class="link-title"><%= link_to link.title, link_url(link) %></div>
+    <div class="link-title">
+      <%= link_to link.title, link_url(link) %>
+    </div>
   </div>
 
   <% end %>
